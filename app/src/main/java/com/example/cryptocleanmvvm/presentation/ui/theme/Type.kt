@@ -1,4 +1,4 @@
-package com.example.cryptocleanmvvm.ui.theme
+package com.example.cryptocleanmvvm.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
