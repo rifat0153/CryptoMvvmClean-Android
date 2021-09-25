@@ -9,6 +9,12 @@ sealed class Resource<T>(val data: T? = null, val message: String? = null) {
     class Loading<T>(data: T? = null) : Resource<T>(data)
 }
 
+sealed class MyResource {
+    class  Success<T>(data: T?) :MyResource()
+    class  Error(message: String) :MyResource()
+    class Loading() : MyResource()
+}
+
 
 sealed class CoinsResource(val data: List<Coin>? = null, val message: String? = null) {
     class  Success(data: List<Coin>) :CoinsResource()

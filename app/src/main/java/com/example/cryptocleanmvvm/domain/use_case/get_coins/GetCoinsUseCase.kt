@@ -1,6 +1,7 @@
 package com.example.cryptocleanmvvm.domain.use_case.get_coins
 
 import com.example.cryptocleanmvvm.common.CoinsResource
+import com.example.cryptocleanmvvm.common.MyResource
 import com.example.cryptocleanmvvm.common.Resource
 import com.example.cryptocleanmvvm.data.remote.dto.toCoin
 import com.example.cryptocleanmvvm.domain.model.Coin
@@ -15,19 +16,19 @@ class GetCoinsUseCase @Inject constructor(
     private val repository: CoinRepository
 ) {
 
-    operator fun invoke(): Flow<CoinsResource> = flow {
+    operator fun invoke(): Flow<MyResource> = flow {
 
         try {
-            emit(CoinsResource.Loading())
+            emit(MyResource.Loading())
 
             val coins = repository.getCoins()
-            emit(CoinsResource.Success(data = coins.map { it.toCoin() }))
+            emit(MyResource.Success<List<Coin>>(data = coins.map { it.toCoin() }))
 
         } catch (e: HttpException) {
-            emit(CoinsResource.Error(message = e.localizedMessage ?: "An unexpected error occurred"))
+            emit(MyResource.Error(message = e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {
             emit(
-                CoinsResource.Error(
+                MyResource.Error(
                     message = e.localizedMessage
                         ?: "Couldn't reach server. Check your internet connection"
                 )
