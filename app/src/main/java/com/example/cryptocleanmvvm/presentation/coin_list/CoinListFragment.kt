@@ -14,7 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.cryptocleanmvvm.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CoinListFragment : Fragment() {
 
     override fun onCreateView(

@@ -1,9 +1,6 @@
 package com.example.cryptocleanmvvm.domain.use_case.get_coin
 
-import com.example.cryptocleanmvvm.common.CoinsDetailesource
-import com.example.cryptocleanmvvm.common.CoinsResource
-import com.example.cryptocleanmvvm.common.MyResource
-import com.example.cryptocleanmvvm.data.remote.dto.toCoin
+import com.example.cryptocleanmvvm.common.Resource
 import com.example.cryptocleanmvvm.data.remote.dto.toCoinDetail
 import com.example.cryptocleanmvvm.domain.model.CoinDetail
 import com.example.cryptocleanmvvm.domain.repository.CoinRepository
@@ -14,22 +11,22 @@ import java.io.IOException
 import javax.inject.Inject
 
 class GetCoinUseCase @Inject constructor(
-    private  val repository: CoinRepository
+    private val repository: CoinRepository
 ) {
 
-    operator fun invoke(coinId: String): Flow<MyResource> = flow {
+    operator fun invoke(coinId: String): Flow<Resource<CoinDetail>> = flow {
 
         try {
-            emit(MyResource.Loading())
+            emit(Resource.Loading<CoinDetail>())
 
-            val coin = repository.getCoinById(coinId)
-            emit(MyResource.Success<CoinDetail>(data = coin.toCoinDetail()))
+            val coinDto = repository.getCoinById(coinId)
+            emit(Resource.Success<CoinDetail>(data = coinDto.toCoinDetail()))
 
         } catch (e: HttpException) {
-            emit(MyResource.Error(message = e.localizedMessage ?: "An unexpected error occurred"))
+            emit(Resource.Error<CoinDetail>(message = e.localizedMessage ?: "An unexpected error occurred"))
         } catch (e: IOException) {
             emit(
-                MyResource.Error(
+                Resource.Error<CoinDetail>(
                     message = e.localizedMessage
                         ?: "Couldn't reach server. Check your internet connection"
                 )
@@ -37,5 +34,6 @@ class GetCoinUseCase @Inject constructor(
         }
 
     }
+
 
 }
