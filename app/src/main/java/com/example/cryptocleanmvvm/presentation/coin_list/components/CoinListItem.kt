@@ -1,5 +1,6 @@
 package com.example.cryptocleanmvvm.presentation.coin_list.components
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,11 @@ fun CoinListItem(
     coin: Coin,
     onItemClick: (Coin) -> Unit
 ) {
+
+    Log.d("CoinDetail", "${coin.name}")
+
+    println("${coin.name} found in CoinDetailItem")
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
