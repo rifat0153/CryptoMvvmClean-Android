@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.cryptocleanmvvm.presentation.coin_list.CoinListViewModel
 
 class CoinDetailFragment : Fragment(){
 
@@ -17,7 +19,8 @@ class CoinDetailFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply { 
-            setContent { 
+            setContent {
+
                 Column() {
                     Text(text = "Coin Detail View")
                 }
