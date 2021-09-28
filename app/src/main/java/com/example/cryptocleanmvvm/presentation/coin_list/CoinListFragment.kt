@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.findNavController
 import com.example.cryptocleanmvvm.R
@@ -29,7 +30,7 @@ class CoinListFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 val navController = rememberNavController()
-                
+
                 CoinListScreen(navController = navController)
             }
         }

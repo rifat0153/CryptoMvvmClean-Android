@@ -11,14 +11,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.cryptocleanmvvm.R
+import com.example.cryptocleanmvvm.Screen
 import com.example.cryptocleanmvvm.presentation.coin_list.CoinListState
 import com.example.cryptocleanmvvm.presentation.coin_list.CoinListViewModel
 
 @Composable
 fun CoinListScreen(
     navController: NavController,
-    viewModel: CoinListViewModel = hiltViewModel()
+    viewModel: CoinListViewModel = hiltViewModel(),
+//    viewCoinDetail: () -> Unit
 ) {
 
     val state: CoinListState = viewModel.state.value
@@ -41,9 +44,7 @@ fun CoinListScreen(
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.coinList.size) { coin ->
 
-                        CoinListItem(coin = state.coinList[coin], onItemClick = {
-                            navController.navigate(R.id.viewCoinDetail)
-                        })
+                        CoinListItem(coin = state.coinList[coin], navController = navController )
 
                     }
                 }

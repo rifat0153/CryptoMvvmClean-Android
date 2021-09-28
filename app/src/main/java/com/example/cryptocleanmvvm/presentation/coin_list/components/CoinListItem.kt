@@ -16,12 +16,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.cryptocleanmvvm.Screen
 import com.example.cryptocleanmvvm.domain.model.Coin
 
 @Composable
 fun CoinListItem(
     coin: Coin,
-    onItemClick: (Coin) -> Unit
+    navController : NavController
 ) {
 
     Log.d("CoinDetail", "${coin.name}")
@@ -31,7 +33,10 @@ fun CoinListItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onItemClick(coin) }
+            .clickable {
+                navController.navigate(Screen.DetailScreen.withArgs(coin.id) )
+
+            }
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
