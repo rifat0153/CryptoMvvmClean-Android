@@ -21,12 +21,16 @@ class GetCoinUseCase @Inject constructor(
         try {
             emit(Resource.Loading<CoinDetail>())
 
-            Log.d("AppDebug", "Coid id is use is $coinId")
+            Log.d("AppDebug", "Coin id in useCase is: $coinId")
             val coinDto = repository.getCoinById(coinId)
             emit(Resource.Success<CoinDetail>(data = coinDto.toCoinDetail()))
 
         } catch (e: HttpException) {
-            emit(Resource.Error<CoinDetail>(message = e.localizedMessage ?: "An unexpected error occurred"))
+            emit(
+                Resource.Error<CoinDetail>(
+                    message = e.localizedMessage ?: "An unexpected error occurred"
+                )
+            )
         } catch (e: IOException) {
             emit(
                 Resource.Error<CoinDetail>(

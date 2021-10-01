@@ -20,27 +20,22 @@ fun Navigation() {
             CoinListScreen(navController = navController)
         }
 
+//        With Argument Passing to composable
         composable(
-            route = Screen.CoinDetailScreen.route + "/{coinId}"
-        ) {
-            CoinDetailScreen()
-        }
+            route = Screen.CoinDetailScreen.route + "/{coinId}",
+            arguments = listOf(
+                navArgument("coinId") {
+                    type = NavType.StringType
+                    defaultValue = "1"
+                    nullable = true
+                }
 
-//        composable(
-//            route = Screen.CoinDetailScreen.route + "/{coinId}",
-//            arguments = listOf(
-//                navArgument("coinId") {
-//                    type = NavType.StringType
-//                    defaultValue = "1"
-//                    nullable = true
-//                }
-//
-//            )
-//        ) { entry ->
-//            CoinDetailScreen(
-////                coinId = entry.arguments?.getString("id")
-//            )
-//        }
+            )
+        ) { entry ->
+            CoinDetailScreen(
+//                coinId = entry.arguments?.getString("coinId") ?: ""
+            )
+        }
     }
 }
 
