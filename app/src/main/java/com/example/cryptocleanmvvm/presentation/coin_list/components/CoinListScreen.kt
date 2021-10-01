@@ -9,11 +9,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.example.cryptocleanmvvm.R
-import com.example.cryptocleanmvvm.Screen
 import com.example.cryptocleanmvvm.presentation.coin_list.CoinListState
 import com.example.cryptocleanmvvm.presentation.coin_list.CoinListViewModel
 
@@ -34,10 +32,11 @@ fun CoinListScreen(
                 )
             )
 
-            is CoinListState.Error -> Text(
+            is CoinListState.Error ->   Text(
                 text = state.error,
-                style = MaterialTheme.typography.body1,
-                modifier = Modifier.align(Alignment.Center)
+                color = MaterialTheme.colors.error,
+                textAlign = TextAlign.Center,
+                modifier = Modifier. align(Alignment.Center)
             )
 
             is CoinListState.Success -> {

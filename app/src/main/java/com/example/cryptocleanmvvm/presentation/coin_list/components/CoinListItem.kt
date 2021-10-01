@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.cryptocleanmvvm.Screen
+import com.example.cryptocleanmvvm.presentation.Screen
 import com.example.cryptocleanmvvm.domain.model.Coin
 
 @Composable
@@ -34,7 +34,7 @@ fun CoinListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                navController.navigate(Screen.DetailScreen.withArgs(coin.id) )
+                navController.navigate(Screen.CoinDetailScreen.withArgs(coin.id) )
 
             }
             .padding(20.dp),
