@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.cryptocleanmvvm.presentation.Screen
-import com.example.cryptocleanmvvm.presentation.coin_detail.CoinDetailScreen
+import com.example.cryptocleanmvvm.presentation.coin_list.components.CoinDetailScreen
 import com.example.cryptocleanmvvm.presentation.coin_list.components.CoinListScreen
 
 @Composable
@@ -31,10 +31,8 @@ fun Navigation() {
 
             )
         ) { entry ->
-//                CoinDetailScreen(  navController = navController, coinId = 1 )
             CoinDetailScreen(
-                navController = navController,
-                coinId = entry.arguments?.getString("id")
+//                coinId = entry.arguments?.getString("id")
             )
         }
     }

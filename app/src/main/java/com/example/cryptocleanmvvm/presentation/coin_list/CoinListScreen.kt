@@ -19,7 +19,6 @@ import com.example.cryptocleanmvvm.presentation.coin_list.CoinListViewModel
 fun CoinListScreen(
     navController: NavController,
     viewModel: CoinListViewModel = hiltViewModel(),
-//    viewCoinDetail: () -> Unit
 ) {
 
     val state: CoinListState = viewModel.state.value
