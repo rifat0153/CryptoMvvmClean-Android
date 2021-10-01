@@ -23,19 +23,14 @@ import com.example.cryptocleanmvvm.domain.model.Coin
 @Composable
 fun CoinListItem(
     coin: Coin,
-    navController : NavController
+    navController: NavController
 ) {
-
-    Log.d("CoinDetail", "${coin.name}")
-
-    println("${coin.name} found in CoinDetailItem")
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                navController.navigate(Screen.CoinDetailScreen.withArgs(coin.id) )
-
+                navController.navigate(Screen.CoinDetailScreen.route + "/${coin.id}"  )
             }
             .padding(20.dp),
         horizontalArrangement = Arrangement.SpaceBetween

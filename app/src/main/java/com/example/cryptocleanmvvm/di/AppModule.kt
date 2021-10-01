@@ -22,8 +22,8 @@ object AppModule {
     fun providePaprikaApi(): CoinPaprikaApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+//            .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CoinPaprikaApi::class.java)
     }

@@ -6,5 +6,5 @@ import com.example.cryptocleanmvvm.data.remote.dto.CoinDto
 interface CoinRepository {
     suspend fun getCoins() : List<CoinDto>
 
-    suspend fun getCoinById(coidId: String): CoinDetailDto
+    suspend fun getCoinById(coinId: String): CoinDetailDto
 }

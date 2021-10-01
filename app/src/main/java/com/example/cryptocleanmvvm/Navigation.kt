@@ -21,20 +21,26 @@ fun Navigation() {
         }
 
         composable(
-            route = Screen.CoinDetailScreen.route + "/{id}",
-            arguments = listOf(
-                navArgument("id") {
-                    type = NavType.StringType
-                    defaultValue = "1"
-                    nullable = true
-                }
-
-            )
-        ) { entry ->
-            CoinDetailScreen(
-//                coinId = entry.arguments?.getString("id")
-            )
+            route = Screen.CoinDetailScreen.route + "/{coinId}"
+        ) {
+            CoinDetailScreen()
         }
+
+//        composable(
+//            route = Screen.CoinDetailScreen.route + "/{coinId}",
+//            arguments = listOf(
+//                navArgument("coinId") {
+//                    type = NavType.StringType
+//                    defaultValue = "1"
+//                    nullable = true
+//                }
+//
+//            )
+//        ) { entry ->
+//            CoinDetailScreen(
+////                coinId = entry.arguments?.getString("id")
+//            )
+//        }
     }
 }
 

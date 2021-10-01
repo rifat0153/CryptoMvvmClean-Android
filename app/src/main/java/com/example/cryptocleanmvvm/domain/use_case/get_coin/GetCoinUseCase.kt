@@ -1,5 +1,7 @@
 package com.example.cryptocleanmvvm.domain.use_case.get_coin
 
+import android.util.Log
+import com.example.cryptocleanmvvm.common.Constants
 import com.example.cryptocleanmvvm.common.Resource
 import com.example.cryptocleanmvvm.data.remote.dto.toCoinDetail
 import com.example.cryptocleanmvvm.domain.model.CoinDetail
@@ -19,6 +21,7 @@ class GetCoinUseCase @Inject constructor(
         try {
             emit(Resource.Loading<CoinDetail>())
 
+            Log.d("AppDebug", "Coid id is use is $coinId")
             val coinDto = repository.getCoinById(coinId)
             emit(Resource.Success<CoinDetail>(data = coinDto.toCoinDetail()))
 
